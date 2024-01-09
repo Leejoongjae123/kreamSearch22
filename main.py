@@ -24,9 +24,7 @@ def GetIDs():
     productIdList=[]
     categoryList=['63','34','64','65','9','66','54','7','67','46','11','43','68']
     for category in categoryList:
-
         count = 1
-
         while True:
             cookies = {
                 'i18n_redirected': 'kr',
@@ -92,7 +90,7 @@ def GetIDs():
                     time.sleep(10)
 
             results=json.loads(response.text)
-            pprint.pprint(results)
+            # pprint.pprint(results)
             results=results['items']
             if len(results)==0:
                 break
@@ -101,25 +99,25 @@ def GetIDs():
                     productId=result['product']['release']['id']
                 except:
                     productId=""
-                print("productId:",productId)
+                # print("productId:",productId)
                 try:
                     title=result['product']['release']['translated_name']
                 except:
                     title=""
-                print("title:",title)
+                # print("title:",title)
                 try:
                     brand = result['product']['brand']['name']
                 except:
                     brand=""
-                print("brand:",brand,"/ brand_TYPE:",type(brand))
+                # print("brand:",brand,"/ brand_TYPE:",type(brand))
                 try:
                     modelCode=result['product']['release']['style_code']
                 except:
                     modelCode=""
-                print("modelCode:",modelCode)
-
-                print("productId:",productId,"/ productId_TYPE:",type(productId))
+                # print("modelCode:",modelCode)
+                # print("productId:",productId,"/ productId_TYPE:",type(productId))
                 data={'productId':productId,'title':title,'modelCode':modelCode,'brand':brand}
+                print("data:",data,"/ data_TYPE:",type(data))
                 productIdList.append(data)
             with open('productIdList.json', 'w',encoding='utf-8-sig') as f:
                 json.dump(productIdList, f, indent=2,ensure_ascii=False)
@@ -455,6 +453,7 @@ while True:
         # ============전체상품리스트 가져오기
         productIdList=GetIDs()
 
+
         # ================상세정보에서 1차 필터링
         with open ('productIdList.json', "r",encoding='utf-8-sig') as f:
             productDataList = json.load(f)
@@ -513,7 +512,7 @@ while True:
                 dataList = GetGMTransaction(GMScroll, token, refreshToken, headers, productNo)
                 print("가져오기성공")
                 time.sleep(random.randint(1,2))
-                pprint.pprint(dataList)
+                # pprint.pprint(dataList)
                 with open('dataList.json', 'w', encoding='utf-8-sig') as f:
                     json.dump(dataList, f, indent=2, ensure_ascii=False)
             except:
@@ -528,5 +527,5 @@ while True:
             filepath='result.xlsx'
             wb.save(filepath)
         SendMail(filepath)
-        count=0
-        firstFlag=False
+    count=0
+    firstFlag=False
