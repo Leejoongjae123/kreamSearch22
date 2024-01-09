@@ -1,0 +1,38 @@
+﻿[
+  {
+    "category": "GM",
+    "price": 1853000.0,
+    "size": "XL",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1800000.0,
+    "size": "XXL",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1700000.0,
+    "size": "XXL",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1600000.0,
+    "size": "XXL",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1500000.0,
+    "size": "XXL",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 548000.0,
+    "size": "XXL",
+    "quantity": 1
+  }
+]

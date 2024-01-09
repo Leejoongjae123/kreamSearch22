@@ -1,0 +1,26 @@
+﻿[
+  {
+    "category": "GM",
+    "price": 2380000.0,
+    "size": "3",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1900000.0,
+    "size": "4",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1000000.0,
+    "size": "3",
+    "quantity": 1
+  },
+  {
+    "category": "GM",
+    "price": 1000000.0,
+    "size": "4",
+    "quantity": 1
+  }
+]
