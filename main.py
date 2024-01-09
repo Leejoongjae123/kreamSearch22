@@ -420,11 +420,12 @@ def SendMail(filepath):
     print("전송완료")
 
 count=0
+firstFlag=True
 while True:
     print("대기중...")
     count+=1
     time.sleep(1)
-    if count>=90000:
+    if count>=90000 or firstFlag==True:
         cookies={
         'i18n_redirected': 'kr',
         '_fwb': '53Fihu8lGaq0KdYC9zdmgQ.1704327945391',
@@ -528,3 +529,4 @@ while True:
             wb.save(filepath)
         SendMail(filepath)
         count=0
+        firstFlag=False
