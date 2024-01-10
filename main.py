@@ -518,7 +518,7 @@ while True:
             except:
                 print("구매정보가져오기실패")
                 continue
-            timeNow=datetime.datetime.now().strftime("Y%m%d %H:%M")
+            timeNow=datetime.datetime.now().strftime("%Y%m%d %H:%M")
             for data in dataList:
                 # columName = ['확인날짜', '상품명', '발매가', '옵션', '판매가', '브랜드', '모델코드', 'URL']
                 dataRow=[timeNow,filteredElem['title'],filteredElem['originPrice'],data['price'],data['size'],filteredElem['brand'],filteredElem['modelCode'],"https://www.kream.co.kr/products/{}".format(productNo)]
