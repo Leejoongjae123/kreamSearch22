@@ -130,6 +130,7 @@ def GetIDs():
     # pprint.pprint(results)
 
 def GetBasicData(cookies,productNo):
+    print("1234")
     headers = {
         'authority': 'www.kream.co.kr',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -147,9 +148,11 @@ def GetBasicData(cookies,productNo):
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
     }
+
     while True:
         try:
             response = requests.get('https://www.kream.co.kr/products/{}'.format(productNo), cookies=cookies, headers=headers)
+            print(response.text)
             response.raise_for_status()
             print("statuscode:",response.status_code)
             break
@@ -243,7 +246,7 @@ def GetToken():
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'x-kream-api-version': '25',
+        'x-kream-api-version': '26',
         'x-kream-client-datetime': '20231207233954+0900',
         'x-kream-device-id': 'web;44c3f570-2970-47b3-9fc2-a23f225698eb',
         'x-kream-web-build-version': '4.17.0',
@@ -417,6 +420,8 @@ def SendMail(filepath):
     server.quit()
     print("전송완료")
 
+
+
 count=0
 firstFlag=True
 while True:
@@ -451,26 +456,26 @@ while True:
         }
 
         # ============전체상품리스트 가져오기
-        productIdList=GetIDs()
+        # productIdList=GetIDs()
 
 
-        # ================상세정보에서 1차 필터링
-        with open ('productIdList.json', "r",encoding='utf-8-sig') as f:
-            productDataList = json.load(f)
-        filteredList=[]
-        for index,productData in enumerate(productDataList):
-            url='https://www.kream.co.kr/products/{}'.format(productData['productId'])
-            print("url:",url,"/ url_TYPE:",type(url))
-            productId=productData['productId']
-            checkResult,originPrice=GetBasicData(cookies,productId)
-            if checkResult==True:
-                data={'productId':productId,'title':productData['title'],'modelCode':productData['modelCode'],'brand':productData['brand'],'originPrice':originPrice}
-                filteredList.append(data)
-                with open('filteredList.json', 'w',encoding='utf-8-sig') as f:
-                    json.dump(filteredList, f, indent=2,ensure_ascii=False)
-
-            print("==========={}/{}=================".format(index+1,len(productDataList)))
-            time.sleep(random.randint(5,10)*0.1)
+        # # ================상세정보에서 1차 필터링
+        # with open ('productIdList.json', "r",encoding='utf-8-sig') as f:
+        #     productDataList = json.load(f)
+        # filteredList=[]
+        # for index,productData in enumerate(productDataList):
+        #     url='https://www.kream.co.kr/products/{}'.format(productData['productId'])
+        #     print("url:",url,"/ url_TYPE:",type(url))
+        #     productId=productData['productId']
+        #     checkResult,originPrice=GetBasicData(cookies,productId)
+        #     if checkResult==True:
+        #         data={'productId':productId,'title':productData['title'],'modelCode':productData['modelCode'],'brand':productData['brand'],'originPrice':originPrice}
+        #         filteredList.append(data)
+        #         with open('filteredList.json', 'w',encoding='utf-8-sig') as f:
+        #             json.dump(filteredList, f, indent=2,ensure_ascii=False)
+        #
+        #     print("==========={}/{}=================".format(index+1,len(productDataList)))
+        #     time.sleep(random.randint(5,10)*0.1)
 
         #========================로그인하기
         with open ('filteredList.json', "r",encoding='utf-8-sig') as f:
@@ -502,7 +507,7 @@ while True:
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
-            'x-kream-api-version': '25',
+            'x-kream-api-version': '26',
             'x-kream-client-datetime': '20230915000940+0900',
             'x-kream-device-id': 'web;75448f17-2f9f-4c5d-bb93-45a642909201',
             }
