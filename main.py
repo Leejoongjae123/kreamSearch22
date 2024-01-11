@@ -65,7 +65,7 @@ def GetIDs():
                 'sec-fetch-mode': 'cors',
                 'sec-fetch-site': 'same-origin',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'x-kream-api-version': '25',
+                'x-kream-api-version': '26',
                 'x-kream-client-datetime': '20240105135348+0900',
                 'x-kream-device-id': 'web;62c963a0-bdfd-488d-b8a8-5bcf1c8120dd',
                 'x-kream-web-build-version': '4.17.7',
@@ -456,26 +456,26 @@ while True:
         }
 
         # ============전체상품리스트 가져오기
-        # productIdList=GetIDs()
+        productIdList=GetIDs()
 
 
         # # ================상세정보에서 1차 필터링
-        # with open ('productIdList.json', "r",encoding='utf-8-sig') as f:
-        #     productDataList = json.load(f)
-        # filteredList=[]
-        # for index,productData in enumerate(productDataList):
-        #     url='https://www.kream.co.kr/products/{}'.format(productData['productId'])
-        #     print("url:",url,"/ url_TYPE:",type(url))
-        #     productId=productData['productId']
-        #     checkResult,originPrice=GetBasicData(cookies,productId)
-        #     if checkResult==True:
-        #         data={'productId':productId,'title':productData['title'],'modelCode':productData['modelCode'],'brand':productData['brand'],'originPrice':originPrice}
-        #         filteredList.append(data)
-        #         with open('filteredList.json', 'w',encoding='utf-8-sig') as f:
-        #             json.dump(filteredList, f, indent=2,ensure_ascii=False)
-        #
-        #     print("==========={}/{}=================".format(index+1,len(productDataList)))
-        #     time.sleep(random.randint(5,10)*0.1)
+        with open ('productIdList.json', "r",encoding='utf-8-sig') as f:
+            productDataList = json.load(f)
+        filteredList=[]
+        for index,productData in enumerate(productDataList):
+            url='https://www.kream.co.kr/products/{}'.format(productData['productId'])
+            print("url:",url,"/ url_TYPE:",type(url))
+            productId=productData['productId']
+            checkResult,originPrice=GetBasicData(cookies,productId)
+            if checkResult==True:
+                data={'productId':productId,'title':productData['title'],'modelCode':productData['modelCode'],'brand':productData['brand'],'originPrice':originPrice}
+                filteredList.append(data)
+                with open('filteredList.json', 'w',encoding='utf-8-sig') as f:
+                    json.dump(filteredList, f, indent=2,ensure_ascii=False)
+
+            print("==========={}/{}=================".format(index+1,len(productDataList)))
+            time.sleep(random.randint(5,10)*0.1)
 
         #========================로그인하기
         with open ('filteredList.json', "r",encoding='utf-8-sig') as f:
