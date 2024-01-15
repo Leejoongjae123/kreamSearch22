@@ -1,20 +1,8 @@
 ﻿[
   {
     "category": "GM",
-    "price": 1200000.0,
-    "size": "XL",
-    "quantity": 1
-  },
-  {
-    "category": "GM",
-    "price": 724000.0,
-    "size": "M",
-    "quantity": 1
-  },
-  {
-    "category": "GM",
-    "price": 200000.0,
-    "size": "M",
+    "price": 440000.0,
+    "size": "ONE SIZE",
     "quantity": 1
   }
 ]

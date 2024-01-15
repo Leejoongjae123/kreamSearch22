@@ -425,7 +425,7 @@ def SendMail(filepath):
 count=0
 firstFlag=True
 while True:
-    print("대기중...")
+    print("대기중...{}".format(count))
     count+=1
     time.sleep(1)
     if count>=90000 or firstFlag==True:
@@ -532,5 +532,4 @@ while True:
             filepath='result.xlsx'
             wb.save(filepath)
         SendMail(filepath)
-    count=0
-    firstFlag=False
+        firstFlag=False
