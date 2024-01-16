@@ -152,7 +152,7 @@ def GetBasicData(cookies,productNo):
     while True:
         try:
             response = requests.get('https://www.kream.co.kr/products/{}'.format(productNo), cookies=cookies, headers=headers)
-            print(response.text)
+            # print(response.text)
             response.raise_for_status()
             print("statuscode:",response.status_code)
             break
@@ -268,7 +268,7 @@ def GetToken():
 
     response = requests.post('https://kream.co.kr/api/auth/login', cookies=cookies, headers=headers,
                              json=json_data)
-    print(response.text)
+    # print(response.text)
     results=json.loads(response.text)
     with open('tokenData.json', 'w',encoding='utf-8-sig') as f:
         json.dump(results, f, indent=2,ensure_ascii=False)
@@ -320,7 +320,7 @@ def GetGMTransaction(GMScroll,token,refreshToken,headers,productNo):
         }
         try:
             response = requests.get('https://kream.co.kr/api/p/products/{}/bids'.format(productNo), params=params,cookies=cookies, headers=headers)
-            print(response.text)
+            # print(response.text)
             results = json.loads(response.text)['items']
         except:
             print("더없다")
