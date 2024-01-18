@@ -90,7 +90,6 @@ def GetIDs():
                     time.sleep(10)
 
             results=json.loads(response.text)
-            # pprint.pprint(results)
             results=results['items']
             if len(results)==0:
                 break
@@ -130,7 +129,7 @@ def GetIDs():
     # pprint.pprint(results)
 
 def GetBasicData(cookies,productNo):
-    print("1234")
+    print('현재시간:',datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
     headers = {
         'authority': 'www.kream.co.kr',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
