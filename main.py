@@ -129,7 +129,7 @@ def GetIDs():
     # pprint.pprint(results)
 
 def GetBasicData(cookies,productNo):
-    print('현재시간:',datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
+
     headers = {
         'authority': 'www.kream.co.kr',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -149,10 +149,9 @@ def GetBasicData(cookies,productNo):
     }
 
     while True:
+        print('현재시간:', datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
         try:
-            response = requests.get('https://www.kream.co.kr/products/{}'.format(productNo), cookies=cookies, headers=headers)
-            # print(response.text)
-            response.raise_for_status()
+            response = requests.get('https://www.kream.co.kr/products/{}'.format(productNo), cookies=cookies, headers=headers,timeout=10)
             print("statuscode:",response.status_code)
             break
         except:
